@@ -1,1 +1,9 @@
 C:\materias\CVDS\L2\MavenProject\patterns\src\main\java\edu\eci\cvds\patterns\App.java
+C:\materias\CVDS\L2\MavenProject\patterns\src\main\java\edu\eci\cvds\patterns\shapes\RegularShapeType.java
+C:\materias\CVDS\L2\MavenProject\patterns\src\main\java\edu\eci\cvds\patterns\shapes\Shape.java
+C:\materias\CVDS\L2\MavenProject\patterns\src\main\java\edu\eci\cvds\patterns\shapes\concrete\Quadrilateral.java
+C:\materias\CVDS\L2\MavenProject\patterns\src\main\java\edu\eci\cvds\patterns\shapes\concrete\Triangle.java
+C:\materias\CVDS\L2\MavenProject\patterns\src\main\java\edu\eci\cvds\patterns\shapes\ShapeFactory.java
+C:\materias\CVDS\L2\MavenProject\patterns\src\main\java\edu\eci\cvds\patterns\shapes\concrete\Hexagon.java
+C:\materias\CVDS\L2\MavenProject\patterns\src\main\java\edu\eci\cvds\patterns\shapes\concrete\Pentagon.java
+C:\materias\CVDS\L2\MavenProject\patterns\src\main\java\edu\eci\cvds\patterns\shapes\ShapeMain.java

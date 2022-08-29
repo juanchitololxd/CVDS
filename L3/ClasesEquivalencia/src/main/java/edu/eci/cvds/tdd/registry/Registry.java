@@ -8,13 +8,14 @@ public class Registry {
 
 	public RegisterResult registerVoter(Person p) {
 		RegisterResult result = RegisterResult.VALID;
-		if (p.getAge() < 18 && p.getAge() >= 0)
+		int edad = p.getAge();
+		if (edad < 18 && edad >= 0)
 			result = RegisterResult.UNDERAGE;
 		else if (!p.isAlive())
 			result = RegisterResult.DEAD;
 		else if (this.existPerson(p))
 			result = RegisterResult.DUPLICATED;
-		else if (p.getAge() < 0)
+		else if (edad < 0)
 			result = RegisterResult.INVALID_AGE;
 		else
 			personsRegistered.add(p.getId());

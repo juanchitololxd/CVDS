@@ -24,6 +24,8 @@
 			<groupId>edu.eci.cvds</groupId>
 			<artifactId>aerodescuentos</artifactId>
 			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>C:/Users/ASUS/.m2/repository/edu/eci/cvds/aerodescuentos/1.0.0/aerodescuentos-1.0.0.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

@@ -1,3 +1,5 @@
-L3/ClasesEquivalencia/target/*
-L2/MavenProject/target
-L3/aerodescuentos-1.0.0-jar
+**/target
+**/.classpath
+**/.settings
+**/aerodescuentos-1.0.0.jar
+L3/ClasesEquivalencia/target

@@ -2,6 +2,11 @@ package hangman.model;
 
 public class PowerScore implements GameScore{
 	
+	
+	public PowerScore() {
+		
+	}
+	
 	@Override
 	/**
 	 * Las letras se bonifican con 5^i, donde i es la posición de la letra.

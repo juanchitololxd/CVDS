@@ -24,7 +24,13 @@
     </properties>
     
     <dependencies>
-    		<dependency>
+    <!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
+		<dependency>
+		    <groupId>com.google.inject</groupId>
+		    <artifactId>guice</artifactId>
+		    <version>5.1.0</version>
+		</dependency>		    
+    	<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
 			<version>5.9.0</version>

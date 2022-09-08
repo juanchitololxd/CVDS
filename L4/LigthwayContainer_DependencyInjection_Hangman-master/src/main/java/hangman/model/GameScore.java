@@ -1,11 +1,12 @@
 package hangman.model;
 
+import java.util.HashMap;
+
 public interface GameScore {
 	/**
 	 * Calcula el score del juego
-	 * @param correctCount numero de opciones correctas	
-	 * @param incorrectCount numero de opciones incorrectas 
-	 * @throws GameException cuando el puntaje no es valido 
+	 * @param entries La llave es la posición de la letra, y el value corresponde a si acertó (1), falló (2) o si
+	 * no ha intentado (0).
 	 */
-	int calculateScore(int correctCount, int incorrectCount) throws GameException;
+	int calculateScore(HashMap<Integer, Integer> entries) throws GameException;
 }

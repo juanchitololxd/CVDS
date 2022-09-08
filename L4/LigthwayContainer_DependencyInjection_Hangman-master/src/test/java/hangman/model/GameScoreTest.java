@@ -2,6 +2,8 @@ package hangman.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashMap;
+
 import org.junit.jupiter.api.Test;
 
 
@@ -11,9 +13,11 @@ public class GameScoreTest {
 	void shouldGenExceptionPowerScore() {
 		try {
 			PowerScore powerTest = new PowerScore();
-			powerTest.calculateScore(0, 1);
+			HashMap<Integer, Integer> items = new HashMap<Integer, Integer>();
+			items.put(0, 2);
+			powerTest.calculateScore(items);
 		}catch(Exception e) {
-			assertTrue(GameException.INVALIDHIGHSCORE == e.getMessage());		
+			assertTrue(GameException.INVALIDLESSSCORE == e.getMessage());		
 		}	
 	}
 
@@ -21,9 +25,11 @@ public class GameScoreTest {
 	void shoulGenExceptionBonusScore() {
 		try {
 			BonusScore scoreTest = new BonusScore();
-			scoreTest.calculateScore(0, 1);
+			HashMap<Integer, Integer> items = new HashMap<Integer, Integer>();
+			items.put(0, 2);
+			scoreTest.calculateScore(items);
 		}catch(Exception e) {
-			assertTrue(GameException.INVALIDHIGHSCORE == e.getMessage());		
+			assertTrue(GameException.INVALIDLESSSCORE == e.getMessage());		
 		}	
 		
 	}
@@ -32,9 +38,11 @@ public class GameScoreTest {
 	void shoulGenExceptionOriginalScore() {
 		try {
 			OriginalScore scoreTest = new OriginalScore();
-			scoreTest.calculateScore(0, 11);
+			HashMap<Integer, Integer> items = new HashMap<Integer, Integer>();
+			items.put(0, 2);
+			scoreTest.calculateScore(items);
 		}catch(Exception e) {
-			assertTrue(GameException.INVALIDHIGHSCORE == e.getMessage());		
+			assertTrue(GameException.INVALIDLESSSCORE == e.getMessage());		
 		}	
 		
 	}
@@ -43,8 +51,15 @@ public class GameScoreTest {
 	void shouldPassCalcOriginalScore() {
 		try {
 			OriginalScore scoreTest = new OriginalScore();
-			assertTrue(scoreTest.calculateScore(200, 3) == 70);
-			assertTrue(scoreTest.calculateScore(0, 10) == 0);			
+			HashMap<Integer, Integer> items = new HashMap<Integer, Integer>();
+			items.put(0, 1);
+			items.put(1, 0);
+			items.put(2, 2); items.put(3, 2); items.put(4, 2); items.put(5, 2);
+			
+			assertTrue(scoreTest.calculateScore(items) == 60);
+			items.put(6, 2); items.put(7, 2); items.put(8, 2); items.put(9, 2); items.put(10, 2); items.put(11, 2);
+			
+			assertTrue(scoreTest.calculateScore(items) == 0);			
 		}catch(Exception e) {}
 
 	}
@@ -53,8 +68,14 @@ public class GameScoreTest {
 	void shouldPassCalcBonusScore() {
 		try {
 			BonusScore scoreTest = new BonusScore();
-			assertTrue(scoreTest.calculateScore(2, 1) == 15);
-			assertTrue(scoreTest.calculateScore(4, 8) == 0);
+			HashMap<Integer, Integer> items = new HashMap<Integer, Integer>();
+			items.put(0, 1); items.put(2, 1);
+			items.put(1, 0); items.put(3, 2);
+			
+			assertTrue(scoreTest.calculateScore(items) == 15);
+			
+			items.put(4, 2); items.put(5, 2); items.put(6, 2); 
+			assertTrue(scoreTest.calculateScore(items) == 0);
 		}catch(Exception e) {}
 	}
 	
@@ -62,8 +83,10 @@ public class GameScoreTest {
 	void shouldPassCalcPowerScore() {
 		try {
 			PowerScore scoreTest = new PowerScore();
-			//La verdad no sabemos como la funcion puede saber en que
-			//posicion estaba la correcta
+			HashMap<Integer, Integer> items = new HashMap<Integer, Integer>();
+			items.put(0, 1); items.put(2, 1);
+			items.put(1, 0); items.put(3, 2);
+			assertTrue(scoreTest.calculateScore(items) == 18);
 		}catch(Exception e) {}
 	}
 }

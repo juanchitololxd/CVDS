@@ -3,15 +3,17 @@
 xmlns:h="http://xmlns.jcp.org/jsf/html"
 xmlns:p="http://primefaces.org/ui">
  <h:head>titulo</h:head>
- <!-- <h:body>
-        <h:form id="guess_form"> 
-            <p:outputLabel  style="display: none;" value="#{guess.numeroGuess}" name="numeroGuess"/>
-            Intentos: <p:outputLabel value="#{guessBean.intentos}"></p:outputLabel>
-            Estado: <p:outputLabel value="#{guessBean.estado}"></p:outputLabel>
-            Premio: <p:outputLabel value="#{guessBean.premio}"></p:outputLabel>
-            Numero: <p:inputText value="#{guessBean.numero}" pt:placeholder="Digite el numero"/>
-            <p:commandButton update="guess_form" actionListener="#{guessBean.guess}"/>
-            <p:commandButton update="guess_form" actionListener="#{guessBean.restart}"/>
+ <h:body>
+
+        <h:form>
+
+            <p:panel>
+                <p:outputLabel value="#{guessBean.numeroGuess}" name="numeroGuess"/>
+                <p:outputLabel value="XD"></p:outputLabel>
+                <p:inputText required="true"></p:inputText>
+            </p:panel>
+
+
         </h:form>
-</h:body> -->
+</h:body>
 </html>

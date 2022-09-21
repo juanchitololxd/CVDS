@@ -3,6 +3,11 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+<!-- <managed-bean>
+   <managed-bean-name>helloWorld</managed-bean-name>
+   <managed-bean-class>edu.eci.cvds..model.GuessBean</managed-bean-class>
+   <managed-bean-scope>request</managed-bean-scope>
+</managed-bean>  -->
   <display-name>Archetype Created Web Application</display-name>
 <servlet>
    <servlet-name>Faces Servlet</servlet-name>

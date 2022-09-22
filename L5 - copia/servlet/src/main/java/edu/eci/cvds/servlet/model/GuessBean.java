@@ -4,6 +4,7 @@ import java.util.List;
 
 import java.util.Random;
 
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ApplicationScoped;
 //import javax.faces.bean.ManagedBean;
 import javax.inject.Named;
@@ -14,7 +15,7 @@ import javax.faces.bean.ManagedBean;
 
 @ManagedBean(name = "guessBean")
 // @Named
-@ApplicationScoped
+@SessionScoped 
 public class GuessBean {
     private int premioStart = 100000;
     private int disminucion;
@@ -60,18 +61,25 @@ public class GuessBean {
     public boolean guess(int intento){
         boolean result = false;
         if (this.numeroGuess == intento) result = true;
-        if(!result) disminuirPremio();
+        if(!result) failGuess(intento);
+        else assertGuess();
+        
         return result;
     }
 
-    public void disminuirPremio(){
+    private void failGuess(int intento){
         this.premio -= this.disminucion; 
+        this.intentos.add(intento);
+    }
+
+    private void assertGuess(){
+        this.status = "Ganado";
     }
 
     /**
      * Reinicia el juego
      */
-    public void restart(){
+    public void restart(int num){
         this.init();
     }
 

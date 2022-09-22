@@ -2,16 +2,40 @@
 <html xmlns="http://www.w3c.org/1999/xhtml"
 xmlns:h="http://xmlns.jcp.org/jsf/html"
 xmlns:p="http://primefaces.org/ui">
- <h:head>titulo</h:head>
+ <h:head>
+    <title>titulo</title>
+    <link rel="stylesheet" href="./styles/styles.css"/>
+ </h:head>
+ 
  <h:body>
 
-        <h:form>
+        <h:form id="frm">
+                <p:outputLabel value="#{guessBean.numeroGuess}" class="disable" name="numeroGuess"/>
+                <span class="ui-float-label">
+                    <p:inputText id="lista" type="text" binding="#{input}" required="true"/>
+                    <p:outputLabel for="@previous" value="Numero "/>
+                </span>
 
-            <p:panel>
-                <p:outputLabel value="#{guessBean.numeroGuess}" name="numeroGuess"/>
-                <p:outputLabel value="XD"></p:outputLabel>
-                <p:inputText required="true"></p:inputText>
-            </p:panel>
+                <span class="form-campo-2">
+                    <p> Intentos: </p>
+                    <p:outputLabel  value="#{guessBean.getTotalIntentos()}"/>
+                </span>
+
+                <span class="form-campo-2">
+                    <p> Estado: </p>
+                    <p:outputLabel  value="#{guessBean.status}"/>
+                </span>
+
+                <span class="form-campo-2">
+                    <p> Premio: </p>
+                    <p:outputLabel  value="#{guessBean.premio}"/>
+                </span>
+
+                <div class="botones">
+                    <p:commandButton value="Enviar" icon="pi pi-send" action="#{guessBean.guess(input.value)}" />
+                    <p:commandButton value="Reiniciar" icon="pi pi-restart" action="#{guessBean.restart(1)}"  process="@this" />
+                </div>
+
 
 
         </h:form>

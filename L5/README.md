@@ -21,7 +21,7 @@ El codigo 301 dice que la peticion que se esta haciendo ya no se encuenta en en 
 5. Luego de usar el comando wc -c y pegar el texto obtenido en la peticion GET no arroja el numero de lineas las cuales dieron 3579.
 ![](./assets/Comando_cw.jpeg)
 
-//TODO
+La diferencia entre el metodo GET y POST es que el primero de configuró para traer información, mientras que el segundo se hizo para postear o publicar nueva información. Otros Verbos o métodos son: PUT, HEAD, DELETE
 
 6. Usando el comando "curl"
 ![](./assets/Comando_curl.jpeg)

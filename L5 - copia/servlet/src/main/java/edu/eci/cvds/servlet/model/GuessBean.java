@@ -15,7 +15,8 @@ import javax.faces.bean.ManagedBean;
 
 @ManagedBean(name = "guessBean")
 // @Named
-@SessionScoped 
+// @SessionScoped 
+@ApplicationScoped
 public class GuessBean {
     private int premioStart = 100000;
     private int disminucion;
@@ -79,7 +80,7 @@ public class GuessBean {
     /**
      * Reinicia el juego
      */
-    public void restart(int num){
+    public void restart(){
         this.init();
     }
 

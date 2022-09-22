@@ -32,10 +32,9 @@ xmlns:p="http://primefaces.org/ui">
                 </span>
 
                 <div class="botones">
-                    <p:commandButton value="Enviar" icon="pi pi-send" action="#{guessBean.guess(input.value)}" />
-                    <p:commandButton value="Reiniciar" icon="pi pi-restart" action="#{guessBean.restart(1)}"  process="@this" />
+                    <p:commandButton value="Enviar" update="frm" icon="pi pi-send" action="#{guessBean.guess(input.value)}" />
+                    <p:commandButton value="Reiniciar" update="frm" icon="pi pi-restart" action="#{guessBean.restart()}"  process="@this" />
                 </div>
-
 
 
         </h:form>

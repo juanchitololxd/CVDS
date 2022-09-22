@@ -33,12 +33,68 @@ El parametro "-i" nos muestra mas informacion extra de la peticion como el tipo 
 ![](./assets/Comando_curl-i.jpeg)
 
 ## PARTE 2. HACIENDO UNA APLCIACIÓN WEB DINÁMICA A BAJO NIVEL
-// TODO SampleServlet class
-
-![error ](./assets/error%20package.png)
 
 
-El puerto TCP/IP de Tomcat está configurado como el 8080
+3. El puerto TCP/IP de Tomcat está configurado como el 8080
 
+4.
 ![](./assets/tomcat.png)
-![](./assets/tomcat2.png)
+
+5.
+![](./assets/p4-5.png)
+
+6.
+![](./assets/p4-6.png)
+
+8.
+![](./assets/p4-8.png)
+
+
+10-15
+![](./assets/p4-10.png)
+
+
+Evidencia implementación del post
+![](./assets/post.png)
+
+## PARTE III
+
+17. URL: http://localhost:8080/index.html
+
+20. La diferencia es que con el GET funciona y con el POST no. El motivo es que el POST está configurado para postear un body, y lo que hace el form es simplemente enviaR los parametros que tengamos dentro de el a la URL, es por eso  que falla.
+
+Usando GET:
+![](./assets/p3-20.png)
+
+Usando POST:
+![](./assets/p3-20A.png)
+
+21. Lo que se está viendo es una renderización del codigo html que internamente está generando la clase  Service.java
+
+
+## PARTE IV
+
+Sobre esta parte todo lo solicitado está a excepción del punto 11 "Para facilitar los intentos del usuario, se agregará una lista de los últimos intentos fallidos realizado". El motivo es que obtuvimos un error cada que intentabamos usar la etiqueta p:read para poder iterar sobre nuestro arreglo de intentos.
+
+
+10. c No coinciden, esto es porque @SessionScoped resetea las variables por sesión. En este caso basta con recargar el sitio para que se vuelva a instanciar una nueva clase con otro numero random. 
+
+Por otro lado, @ApplicationScoped mantiene los datos de la clase 'vivos' mientras que el navegador no sea cerrado.
+
+10. d Herramientas de desarrollador:
+- Ubique el código HTML generado por el servidor
+![](./assets/html.png)
+
+
+- Busque el elemento oculto, que contiene el número generado aleatoriamente
+![](./assets/numoculto.png)
+
+- En la sección de estilos, deshabilite el estilo que oculta el elemento para que sea visible.
+![](./assets/numdesocultoxd.png)
+
+- Revise qué otros estilos se pueden agregar a los diferentes elementos y qué efecto tienen en la visualización de la página: Se puede agregar cualquier estilo que sea soportado por CSS.
+
+- Revise qué otros cambios se pueden realizar y qué otra información se puede obtener de las herramientas de desarrollador: Se puede editar el html, o atributos que tengan los nodos por ejemplo. Otra información importante es la que se puede observar en "network". Aquí se ve el trafico de peticiones que han tenido relación con la aplicación.
+
+![](./assets/net.png)
+

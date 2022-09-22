@@ -1,0 +1,33 @@
+
+
+#frm {
+    margin-top: 90px;
+}
+
+#frm, #frm > * {
+    margin-bottom: 30px;
+    margin-inline: auto;
+    text-align: center;
+    align-items: center;
+}
+
+.ui-float-label {
+    display: initial;
+}
+
+.form-campo-2 {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    align-items: center;
+    width: 28%;
+}
+
+.disable {
+    display: none;
+}
+
+.botones, .botones * {
+    text-align: center;
+    margin-inline: auto;
+  }
+

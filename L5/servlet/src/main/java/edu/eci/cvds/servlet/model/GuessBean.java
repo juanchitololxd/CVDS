@@ -42,6 +42,10 @@ public class GuessBean {
         return this.numeroGuess;
     }
 
+    public List<Integer> getIntentos(){
+        return this.intentos;
+    }
+
 
     public int getTotalIntentos(){
         return this.intentos.size();

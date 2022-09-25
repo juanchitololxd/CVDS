@@ -36,6 +36,12 @@ xmlns:p="http://primefaces.org/ui">
                     <p:commandButton value="Reiniciar" update="frm" icon="pi pi-restart" action="#{guessBean.restart()}"  process="@this" />
                 </div>
 
+                <p:dataTable var="intento" value="#{guessBean.getIntentos()}" >
+                    <p:column headerText="Intento">
+                        <h:outputText value="#{intento}" />
+                    </p:column>
+                </p:dataTable>
+
 
         </h:form>
 </h:body>

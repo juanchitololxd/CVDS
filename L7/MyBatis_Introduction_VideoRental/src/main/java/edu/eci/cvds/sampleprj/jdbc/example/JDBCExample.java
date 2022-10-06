@@ -81,12 +81,21 @@ public class JDBCExample {
      * @throws SQLException 
      */
     public static void registrarNuevoProducto(Connection con, int codigo, String nombre,int precio) throws SQLException{
-        //Crear preparedStatement
-        //Asignar parámetros
-        //usar 'execute'
-    	con.prepareStatement("");
+        List<String> np=new LinkedList<>();
+        String consulta = "INSERT INTO ORD_PRODUCTOS VALUES ( ?, ?, ?)";         
+         try {
+             PreparedStatement ps = con.prepareStatement(consulta);
+             ResultSet result = ps.executeQuery();
+             ps.setString(1, String.valueOf(codigo));
+             ps.setString(1, nombre);
+             ps.setString(1, String.valueOf(precio));
+             con.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         
-        con.commit();
+        
+        
         
     }
     
@@ -99,22 +108,18 @@ public class JDBCExample {
     public static List<String> nombresProductosPedido(Connection con, int codigoPedido){
         List<String> np=new LinkedList<>();
         //Crear prepared statement
-        String consulta = "select * from ORD_PRODUCTOS where codigo = ? ";         
+        String consulta = "SELECT nombre FROM ORD_PRODUCTOS op JOIN ORD_DETALLE_PEDIDO odp ON op.codigo= odp.pedido_fk" +
+                " where odp.pedido_fk = ?";         
          try {
              PreparedStatement ps = con.prepareStatement(consulta);
-             //asignar parámetros
              ps.setString(1, String.valueOf(codigoPedido));
-             //usar executeQuery
              ResultSet result = ps.executeQuery();
-             //Sacar resultados del ResultSet
-             //Llenar la lista y retornarla
              while( result.next()) {
-            	 np.add(result.getString(0));
+            	 np.add(result.getString("nombre"));
              }
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
         
         return np;
     }
@@ -127,13 +132,22 @@ public class JDBCExample {
      * @return el costo total del pedido (suma de: cantidades*precios)
      */
     public static int valorTotalPedido(Connection con, int codigoPedido){
+  
+        String consulta = "SELECT SUM(cantidad*precio) FROM ORD_DETALLE_PEDIDO odp " +
+                "JOIN ORD_PRODUCTOS op ON (op.codigo = odp.producto_fk) where pedido_fk =?;";
+        int total = 0;
+         try {
+             PreparedStatement ps = con.prepareStatement(consulta);
+             ps.setString(1, String.valueOf(codigoPedido));
+             ResultSet result = ps.executeQuery();
+             while( result.next()) {
+                 total += result.getInt(1); 
+             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         
-        //Crear prepared statement
-        //asignar parámetros
-        //usar executeQuery
-        //Sacar resultado del ResultSet
-        
-        return 0;
+        return total;
     }
     
 

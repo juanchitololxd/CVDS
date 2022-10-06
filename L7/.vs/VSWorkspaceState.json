@@ -1,0 +1,18 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\MyBatis_Introduction_VideoRental",
+    "\\MyBatis_Introduction_VideoRental\\src",
+    "\\MyBatis_Introduction_VideoRental\\src\\main",
+    "\\MyBatis_Introduction_VideoRental\\src\\main\\java",
+    "\\MyBatis_Introduction_VideoRental\\src\\main\\java\\edu",
+    "\\MyBatis_Introduction_VideoRental\\src\\main\\java\\edu\\eci",
+    "\\MyBatis_Introduction_VideoRental\\src\\main\\java\\edu\\eci\\cvds",
+    "\\MyBatis_Introduction_VideoRental\\src\\main\\java\\edu\\eci\\cvds\\sampleprj",
+    "\\MyBatis_Introduction_VideoRental\\src\\main\\java\\edu\\eci\\cvds\\sampleprj\\dao",
+    "\\MyBatis_Introduction_VideoRental\\src\\main\\java\\edu\\eci\\cvds\\sampleprj\\dao\\mybatis",
+    "\\MyBatis_Introduction_VideoRental\\src\\main\\java\\edu\\eci\\cvds\\sampleprj\\dao\\mybatis\\mappers"
+  ],
+  "SelectedNode": "\\MyBatis_Introduction_VideoRental\\src\\main\\resources\\mappers\\ClienteMapper.xml",
+  "PreviewInSolutionExplorer": false
+}

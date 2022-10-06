@@ -35,6 +35,9 @@
         LEFT JOIN VI_TIPOITEM AS ti ON (i.TIPOITEM_id = ti.id)
     </select>
 
+    <select parameterType="map" id="prueba" resultType="String">
+      SELECT CLIENTES_documento FROM VI_ITEMRENTADO LIMIT 1
+    </select>
     <resultMap type='Cliente' id='ClienteResult'>
         <id property='documento' column='c_documento'/>
         <result property='nombre' column='c_nombre'/>
@@ -42,8 +45,10 @@
         <result property='direccion' column='c_direccion'/>
         <result property='email' column='c_email'/>
         <result property='vetado' column='c_vetado'/>
-        <collection property='rentados' ofType='ItemRentado'
+        <collection property='rentados'
+                    ofType='ItemRentado'
                     resultMap='edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemRentadoMapper.ItemRentadoResult'>
+
         </collection>
     </resultMap>
 </mapper>

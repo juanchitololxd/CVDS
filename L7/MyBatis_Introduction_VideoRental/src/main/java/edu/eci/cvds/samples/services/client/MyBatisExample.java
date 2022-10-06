@@ -68,17 +68,18 @@ public class MyBatisExample {
         SqlSession sqlss = sessionfact.openSession();
         
         ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
-        
-        Cliente c = cm.consultarCliente(0);
-        System.out.println(c.toString());
-        
-        List<Cliente> clientes = cm.consultarClientes();
-        for(Cliente cliente :clientes){
-            System.out.println(cliente.toString());
-        }
-        
-        cm.agregarItemRentadoACliente(0, 0, null, null);
-        sqlss.commit();
+        //System.out.println(cm.prueba());
+        System.out.println(cm.consultarClientes());
+//        Cliente c = cm.consultarCliente(0);
+//        System.out.println(c.toString());
+//        
+//        List<Cliente> clientes = cm.consultarClientes();
+//        for(Cliente cliente :clientes){
+//            System.out.println(cliente.toString());
+//        }
+//        
+//        cm.agregarItemRentadoACliente(0, 0, null, null);
+//        sqlss.commit();
         
         sqlss.close();
 

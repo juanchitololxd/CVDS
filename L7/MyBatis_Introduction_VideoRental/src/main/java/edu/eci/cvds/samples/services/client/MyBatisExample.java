@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -30,7 +31,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ClienteMapper;
+import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper;
 import edu.eci.cvds.samples.entities.Cliente;
+import edu.eci.cvds.samples.entities.Item;
+import edu.eci.cvds.samples.entities.TipoItem;
 
 /**
  *
@@ -65,25 +69,36 @@ public class MyBatisExample {
      */
     public static void main(String args[]) throws SQLException {
         SqlSessionFactory sessionfact = getSqlSessionFactory();
+        execClienteMapperFunctions(sessionfact);
+        execItemMapperFunctions(sessionfact);
+        
+        
+    }
+
+    private static void execItemMapperFunctions(SqlSessionFactory sessionfact) {
+        SqlSession sqlss = sessionfact.openSession();
+        
+        ItemMapper im=sqlss.getMapper(ItemMapper.class);
+//        im.insertarItem(new Item(new TipoItem(4, "virus"), 360, "papayas africanas", "pues papayas africanas pri", 
+//                new Date(11112011), 500000, "", "M"));
+        sqlss.commit();
+        System.out.println(im.consultarItem(360));
+        System.out.println(im.consultarItems());
+        sqlss.close();
+        
+    }
+
+    private static void execClienteMapperFunctions(SqlSessionFactory sessionfact) {
         SqlSession sqlss = sessionfact.openSession();
         
         ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
         //System.out.println(cm.prueba());
         System.out.println(cm.consultarClientes());
-//        Cliente c = cm.consultarCliente(0);
-//        System.out.println(c.toString());
-//        
-//        List<Cliente> clientes = cm.consultarClientes();
-//        for(Cliente cliente :clientes){
-//            System.out.println(cliente.toString());
-//        }
-//        
-//        cm.agregarItemRentadoACliente(0, 0, null, null);
-//        sqlss.commit();
-        
+        //Insert
+        //cm.agregarItemRentadoACliente(13, 5, new Date(11112011),new Date(12112011));
+        //sqlss.commit();
+        System.out.println(cm.consultarCliente(13));
         sqlss.close();
-
-        
         
     }
 

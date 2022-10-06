@@ -58,10 +58,9 @@ public class JDBCExample {
             System.out.println("-----------------------");
             
             
-            int suCodigoECI=20134423;
-            registrarNuevoProducto(con, suCodigoECI, "SU NOMBRE", 99999999);            
+            int suCodigoECI=2168019;
+            registrarNuevoProducto(con, suCodigoECI, "CARDENAS-FONSECA", 99999999);            
             con.commit();
-                        
             
             con.close();
                                    
@@ -85,10 +84,11 @@ public class JDBCExample {
         String consulta = "INSERT INTO ORD_PRODUCTOS VALUES ( ?, ?, ?)";         
          try {
              PreparedStatement ps = con.prepareStatement(consulta);
-             ResultSet result = ps.executeQuery();
-             ps.setString(1, String.valueOf(codigo));
-             ps.setString(1, nombre);
-             ps.setString(1, String.valueOf(precio));
+             ps.setInt(1, codigo);
+             ps.setString(2, nombre);
+             ps.setInt(3, precio);
+             con.commit();
+             System.out.println("insert: "+ ps.executeUpdate());
              con.commit();
         } catch (SQLException e) {
             e.printStackTrace();

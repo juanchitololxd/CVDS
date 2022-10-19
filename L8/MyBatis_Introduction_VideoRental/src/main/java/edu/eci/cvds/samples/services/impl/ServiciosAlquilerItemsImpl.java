@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
+import org.mybatis.guice.transactional.Transactional;
 
 @Singleton
 public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
@@ -125,6 +126,7 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
     }
 
     @Override
+    @Transactional
     public void registrarAlquilerCliente(Date date, long docu, Item item, int numdias)
             throws ExcepcionServiciosAlquiler {
         try {
@@ -137,6 +139,7 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
     }
 
     @Override
+    @Transactional
     public void registrarCliente(Cliente p) throws ExcepcionServiciosAlquiler {
         try {
             clienteDAO.save(p);
@@ -156,6 +159,7 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
     }
 
     @Override
+    @Transactional
     public void actualizarTarifaItem(int id, long tarifa) throws ExcepcionServiciosAlquiler {
         try {
             Item item = consultarItem(id);
@@ -168,6 +172,7 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
     }
 
     @Override
+    @Transactional
     public void registrarItem(Item i) throws ExcepcionServiciosAlquiler {
         try {
             itemDAO.save(i);
@@ -177,6 +182,7 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
     }
 
     @Override
+    @Transactional
     public void vetarCliente(long docu, boolean estado) throws ExcepcionServiciosAlquiler {
         try {
             Cliente client = consultarCliente((int) docu);

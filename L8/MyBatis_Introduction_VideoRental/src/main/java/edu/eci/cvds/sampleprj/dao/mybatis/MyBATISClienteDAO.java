@@ -1,5 +1,7 @@
 package edu.eci.cvds.sampleprj.dao.mybatis;
 
+import java.util.List;
+
 import org.apache.ibatis.exceptions.PersistenceException;
 
 import edu.eci.cvds.sampleprj.dao.ClienteDAO;
@@ -31,6 +33,15 @@ public class MyBATISClienteDAO implements ClienteDAO{
         }
         
         return null;
+    }
+
+    @Override
+    public List<Cliente> load() throws PersistenceException {
+        try {
+            return clienteMapper.consultarClientes();
+        } catch (Exception e) {
+            throw new PersistenceException("Error al cargar los clientes ", e);
+        }
     }
 
 }

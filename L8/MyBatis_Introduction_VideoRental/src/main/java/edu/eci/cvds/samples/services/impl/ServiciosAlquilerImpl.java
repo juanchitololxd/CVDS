@@ -88,7 +88,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
         List<Item> items = new ArrayList<Item>();
         try {
             items = itemDAO.load();
-        } catch (Exception e) {
+        } catch (PersistenceException e) {
         }
         return items;
     }
@@ -100,7 +100,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
             long dias = ChronoUnit.DAYS.between(item.getFechafinrenta().toLocalDate(), fechaDevolucion.toLocalDate());
             if (dias < 0) dias = 0;
             return  dias * valorMultaRetrasoxDia(iditem);
-        } catch (Exception ex) {
+        } catch (PersistenceException ex) {
             throw new ExcepcionServiciosAlquiler("Error al consultar la multa del alquiler.", ex);
         }
     }
@@ -109,7 +109,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
     public TipoItem consultarTipoItem(int id) throws ExcepcionServiciosAlquiler {
         try {
             return tipoItemDAO.load(id);
-        } catch (Exception ex) {
+        } catch (PersistenceException ex) {
             throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
         }
     }
@@ -118,7 +118,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
     public List<TipoItem> consultarTiposItem() throws ExcepcionServiciosAlquiler {
         try {
             return tipoItemDAO.load();
-        } catch (Exception ex) {
+        } catch (PersistenceException ex) {
             throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
         }
 
@@ -127,37 +127,64 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
     @Override
     public void registrarAlquilerCliente(Date date, long docu, Item item, int numdias)
             throws ExcepcionServiciosAlquiler {
-        // TODO Auto-generated method stub
-
+        try {
+            ItemRentado itemR = new ItemRentado(-1, item, date, Date.valueOf(date.toLocalDate().plusDays(numdias)));
+            Cliente client = consultarCliente((int) docu);
+            itemRDAO.save(itemR, client);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
+        }
     }
 
     @Override
     public void registrarCliente(Cliente p) throws ExcepcionServiciosAlquiler {
-        // TODO Auto-generated method stub
+        try {
+            clienteDAO.save(p);
+        }catch (PersistenceException ex) {
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
+        }
 
     }
 
     @Override
     public long consultarCostoAlquiler(int iditem, int numdias) throws ExcepcionServiciosAlquiler {
-        // TODO Auto-generated method stub
-        return 0;
+        try {
+            return consultarItem(iditem).getTarifaxDia()*numdias;
+        } catch (PersistenceException ex) {
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
+        }
     }
 
     @Override
     public void actualizarTarifaItem(int id, long tarifa) throws ExcepcionServiciosAlquiler {
-        // TODO Auto-generated method stub
+        try {
+            Item item = consultarItem(id);
+            item.setTarifaxDia(tarifa);
+            itemDAO.save(item);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
+        }
 
     }
 
     @Override
     public void registrarItem(Item i) throws ExcepcionServiciosAlquiler {
-        // TODO Auto-generated method stub
-
+        try {
+            itemDAO.save(i);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
+        }
     }
 
     @Override
     public void vetarCliente(long docu, boolean estado) throws ExcepcionServiciosAlquiler {
-        // TODO Auto-generated method stub
+        try {
+            Cliente client = consultarCliente((int) docu);
+            client.setVetado(estado);
+            clienteDAO.save(client);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
+        }
 
     }
 

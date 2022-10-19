@@ -21,5 +21,15 @@ public class MyBatisItemRentadoDAO implements ItemRentadoDAO{
             throw new PersistenceException("Error al consultar el item " + id, e);
         }
     }
+
+    @Override
+    public void save(ItemRentado item) throws PersistenceException {
+        try {
+            itemMapper.insertarItem(item);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        
+    }
     
 }

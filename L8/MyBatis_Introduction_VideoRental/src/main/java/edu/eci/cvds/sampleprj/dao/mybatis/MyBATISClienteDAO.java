@@ -27,12 +27,10 @@ public class MyBATISClienteDAO implements ClienteDAO{
     @Override
     public Cliente load(int id) throws PersistenceException {
         try {
-            clienteMapper.consultarCliente(id);
+            return clienteMapper.consultarCliente(id);
         } catch (Exception e) {
             throw new PersistenceException("Error al cargar el cliente " + String.valueOf(id), e);
         }
-        
-        return null;
     }
 
     @Override

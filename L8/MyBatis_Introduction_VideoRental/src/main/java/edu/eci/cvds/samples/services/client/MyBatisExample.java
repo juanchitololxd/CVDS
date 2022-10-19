@@ -39,6 +39,7 @@ import edu.eci.cvds.samples.entities.Cliente;
 import edu.eci.cvds.samples.entities.Item;
 import edu.eci.cvds.samples.entities.TipoItem;
 import edu.eci.cvds.samples.services.ServiciosAlquiler;
+import edu.eci.cvds.samples.services.ServiciosAlquilerFactory;
 
 /**
  *
@@ -72,7 +73,22 @@ public class MyBatisExample {
      * @throws SQLException 
      */
     public static void main(String args[]) throws SQLException {
-        //Injectar en ServiciosAlquilerItemsImpl
+        ServiciosAlquiler servicios = ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
+        SqlSessionFactory sessionfact = getSqlSessionFactory();
+        SqlSession sqlss = sessionfact.openSession();
+        try {
+            System.out.println("======= VIEJA IMPLEMENTACION ========");
+            ClienteMapper clienteMapper = sqlss.getMapper(ClienteMapper.class);
+            System.out.println(clienteMapper.consultarCliente(13));
+            sqlss.close();
+            
+            System.out.println("======= NUEVA IMPLEMENTACION ========");
+            System.out.println(servicios.consultarCliente(13));
+
+        } catch (Exception e) {
+            System.out.println("F" + e.getMessage());
+        }
+        
     }
 
 

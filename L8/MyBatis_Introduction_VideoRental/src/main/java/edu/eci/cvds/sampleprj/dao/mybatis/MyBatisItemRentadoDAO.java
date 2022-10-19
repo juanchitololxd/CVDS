@@ -6,6 +6,7 @@ import com.google.inject.Inject;
 
 import edu.eci.cvds.sampleprj.dao.ItemRentadoDAO;
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemRentadoMapper;
+import edu.eci.cvds.samples.entities.Cliente;
 import edu.eci.cvds.samples.entities.ItemRentado;
 
 public class MyBatisItemRentadoDAO implements ItemRentadoDAO{
@@ -23,9 +24,9 @@ public class MyBatisItemRentadoDAO implements ItemRentadoDAO{
     }
 
     @Override
-    public void save(ItemRentado item) throws PersistenceException {
+    public void save(ItemRentado item, Cliente cli) throws PersistenceException {
         try {
-            itemMapper.insertarItem(item);
+            itemMapper.insertarItem(item, cli);
         } catch (Exception e) {
             // TODO: handle exception
         }

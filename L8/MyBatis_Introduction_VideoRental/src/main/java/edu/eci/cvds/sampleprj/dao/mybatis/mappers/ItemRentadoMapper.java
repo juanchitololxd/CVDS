@@ -2,6 +2,7 @@ package edu.eci.cvds.sampleprj.dao.mybatis.mappers;
 
 import org.apache.ibatis.annotations.Param;
 
+import edu.eci.cvds.samples.entities.Cliente;
 import edu.eci.cvds.samples.entities.ItemRentado;
 
 public interface ItemRentadoMapper {
@@ -11,5 +12,5 @@ public interface ItemRentadoMapper {
      * //TODO Implementar
      * @return
      */
-    public void insertarItem(@Param("item") ItemRentado item);
+    public void insertarItem(@Param("item") ItemRentado item, @Param("client") Cliente client);
 }

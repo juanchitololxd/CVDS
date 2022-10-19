@@ -32,6 +32,13 @@ public interface ClienteMapper {
      * @return 
      */
     public List<Cliente> consultarClientes();
+
+    /***
+     * Guarda un cliente en BD
+     * TODO Implementar
+     * @return
+     */
+    public void insertarCliente(@Param("client") Cliente client);
     public String prueba();
     
 }

@@ -6,6 +6,7 @@ import com.google.inject.Singleton;
 import edu.eci.cvds.sampleprj.dao.ClienteDAO;
 import edu.eci.cvds.sampleprj.dao.ItemDAO;
 import edu.eci.cvds.sampleprj.dao.ItemRentadoDAO;
+import edu.eci.cvds.sampleprj.dao.TipoItemDAO;
 import edu.eci.cvds.samples.entities.Cliente;
 import edu.eci.cvds.samples.entities.Item;
 import edu.eci.cvds.samples.entities.ItemRentado;
@@ -25,12 +26,15 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
     private ItemDAO itemDAO;
     private ClienteDAO clienteDAO;
     private ItemRentadoDAO itemRDAO;
+    private TipoItemDAO tipoItemDAO;
 
     @Inject
-    public ServiciosAlquilerImpl(ItemDAO itemDAO, ClienteDAO clienteDAO, ItemRentadoDAO itemRDAO) {
+    public ServiciosAlquilerImpl(ItemDAO itemDAO, ClienteDAO clienteDAO, ItemRentadoDAO itemRDAO,
+    TipoItemDAO tipoItemDAO) {
         this.itemDAO = itemDAO;
         this.clienteDAO = clienteDAO;
         this.itemRDAO = itemRDAO;
+        this.tipoItemDAO = tipoItemDAO;
     }
 
     @Override
@@ -103,14 +107,21 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
     @Override
     public TipoItem consultarTipoItem(int id) throws ExcepcionServiciosAlquiler {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            return tipoItemDAO.load(id);
+        } catch (Exception ex) {
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
+        }
     }
 
     @Override
     public List<TipoItem> consultarTiposItem() throws ExcepcionServiciosAlquiler {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            return tipoItemDAO.load();
+        } catch (Exception ex) {
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
+        }
+
     }
 
     @Override

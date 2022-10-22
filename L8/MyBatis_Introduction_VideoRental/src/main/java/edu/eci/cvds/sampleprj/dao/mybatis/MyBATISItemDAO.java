@@ -18,6 +18,7 @@ public class MyBATISItemDAO implements
     @Override
     public void save(Item it) throws PersistenceException {
         try {
+            itemMapper.borrarItem(it.getId());
             itemMapper.insertarItem(it);
         } catch (PersistenceException e) {
             throw new PersistenceException("Error al registrar el item " + it.toString(), e);

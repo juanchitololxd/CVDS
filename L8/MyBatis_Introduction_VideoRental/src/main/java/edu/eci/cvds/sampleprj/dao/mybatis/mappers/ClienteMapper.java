@@ -13,6 +13,7 @@ import edu.eci.cvds.samples.entities.Cliente;
 public interface ClienteMapper {
     
     public Cliente consultarCliente(@Param("idcliente") int id); 
+    public Cliente borrarCliente(@Param("id") int id); 
     
     /**
      * Registrar un nuevo item rentado asociado al cliente identificado

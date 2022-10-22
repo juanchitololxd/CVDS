@@ -18,6 +18,7 @@ public interface ItemMapper {
     
     public Item consultarItem(@Param("id") int id);
     
+    public void borrarItem(@Param("item") int id);
     public void insertarItem(@Param("item") Item it);
 
         

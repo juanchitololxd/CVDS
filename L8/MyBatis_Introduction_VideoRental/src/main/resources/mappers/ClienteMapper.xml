@@ -76,6 +76,10 @@
 	<select parameterType="map" id="prueba" resultType="String">
       SELECT CLIENTES_documento FROM VI_ITEMRENTADO LIMIT 1
     </select>
+
+    <delete parameterType="map" id="borrarCliente">
+		DELETE FROM VI_ITEMS where id = #{id}
+	</delete>
     <resultMap type='Cliente' id='ClienteResult'>
         <id property='documento' column='c_documento'/>
         <result property='nombre' column='c_nombre'/>

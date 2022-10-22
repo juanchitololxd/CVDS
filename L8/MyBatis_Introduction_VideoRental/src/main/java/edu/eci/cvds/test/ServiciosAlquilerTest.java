@@ -4,6 +4,9 @@ import static org.junit.Assert.assertArrayEquals;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.print.DocFlavor.SERVICE_FORMATTED;
+
 import com.google.inject.Inject;
 import edu.eci.cvds.samples.entities.Cliente;
 import edu.eci.cvds.samples.entities.Item;
@@ -24,28 +27,17 @@ public class ServiciosAlquilerTest {
 
     public ServiciosAlquilerTest() {
         serviciosAlquiler = ServiciosAlquilerFactory.getInstance().getServiciosAlquilerTesting();
+        System.out.println(serviciosAlquiler.getClass());
+
     }
 
     @Before
     public void setUp() {
     }
+    
+    
 
-    @Test
-    public void emptyDB() {
-        for (int i = 0; i < 100; i += 10) {
-            boolean r = false;
-            try {
-                Cliente cliente = serviciosAlquiler.consultarCliente(i);
-            } catch (ExcepcionServiciosAlquiler e) {
-                r = true;
-            } catch (IndexOutOfBoundsException e) {
-                r = true;
-            }
-            // Validate no Client was found;
-            Assert.assertTrue(r);
-        }
-        ;
-    }
+
     
     @Test
     public void consultarClientesTest() {
@@ -61,7 +53,6 @@ public class ServiciosAlquilerTest {
         try {
             for(int i = 10; i < 50; i++) {
                 Item item = serviciosAlquiler.consultarItem(i);
-                if (item == null) throw new ExcepcionServiciosAlquiler("NULL");
             }
         } catch (ExcepcionServiciosAlquiler e) {
             assert(false);
@@ -77,8 +68,10 @@ public class ServiciosAlquilerTest {
     @Test
     public void consultarTipoItemTest() {
         try {
-            TipoItem item = serviciosAlquiler.consultarTipoItem(1);
-            if (item == null) throw new ExcepcionServiciosAlquiler("NULL");
+            for(int i = 10; i < 50; i++) {
+                TipoItem item = serviciosAlquiler.consultarTipoItem(1);
+            }
+
         } catch (ExcepcionServiciosAlquiler e) {
             assert(false);
         }
@@ -103,8 +96,32 @@ public class ServiciosAlquilerTest {
             assert(false);
         }
     }
-    
-    //consultarCostoAlquiler consultarMultaAlquiler consultarCostoAlquiler consultarCliente
-    
-    
+
+    @Test 
+    public void consultarCostoAlquilerTest(){
+        try {
+            for(int i = 10; i < 50; i++) {
+                Item item = serviciosAlquiler.consultarItem(i);
+                if (item != null) assert(item.getTarifaxDia()*2 ==serviciosAlquiler.consultarCostoAlquiler(1, 2));
+            }
+
+        } catch (ExcepcionServiciosAlquiler e) {
+            assert(false);
+        }
+    }
+
+    @Test 
+    public void consultarClienteTest(){
+        try {
+            for (int i = 10; i < 20; i++) {
+                serviciosAlquiler.consultarCliente(i);
+                
+            }
+        } catch (Exception e) {
+            assert(false);
+        }
+    }
+
+
+    /********* TEST INSERTS ****************************************/
 }

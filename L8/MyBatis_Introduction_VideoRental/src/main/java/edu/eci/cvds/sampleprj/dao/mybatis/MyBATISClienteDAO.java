@@ -17,6 +17,7 @@ public class MyBATISClienteDAO implements ClienteDAO{
     @Override
     public void save(Cliente cliente) throws PersistenceException {
         try {
+            clienteMapper.borrarCliente((int) cliente.getDocumento());
             clienteMapper.insertarCliente(cliente);
         } catch (PersistenceException e) {
             throw new PersistenceException("Error al guardar el cliente " + cliente.toString(), e);

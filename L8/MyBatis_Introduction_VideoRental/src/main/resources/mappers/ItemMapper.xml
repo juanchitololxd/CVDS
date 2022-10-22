@@ -45,6 +45,10 @@
 		#{item.fechaLanzamiento}, #{item.tarifaxDia}, #{item.formatoRenta},
 		#{item.genero}, #{item.tipo.id})
 	</insert>
+
+	<delete parameterType="map" id="insertarItem">
+		DELETE FROM VI_ITEMS where id = #{id}
+	</delete>
 	
 	
     <resultMap type='Item' id='ItemResult'>

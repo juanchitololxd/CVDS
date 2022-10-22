@@ -21,6 +21,11 @@
 
 </select>
 
+<insert parameterType="map" id="addTipoItem">
+	INSERT INTO VI_TIPOITEM
+	VALUES(#{item.id},#{item.descripcion})
+</insert>
+
     <resultMap type='TipoItem' id='TipoItemResult'>
         <id property='id' column='ti_id'/>
         <result property='descripcion' column='ti_descripcion'/>

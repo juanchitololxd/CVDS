@@ -27,6 +27,12 @@
 	WHERE ir.id = #{id}
 
 </select>
+
+<insert parameterType="map" id="insertarItem">
+	INSERT INTO VI_ITEMRENTADO
+	VALUES(#{item.id},#{client.id},#{item.item.id},#{item.fechainiciorenta}, #{item.fechafinrenta})
+</insert>
+
     <resultMap type='ItemRentado' id='ItemRentadoResult' >
         <id property='id' column='ir_id'/>
         <result property='fechainiciorenta' column='ir_fechainiciorenta'/>
